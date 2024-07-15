@@ -1,0 +1,10 @@
+#video-player {
+  width: 640px;
+  height: 480px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+#audio-tracks {
+  margin-top: 20px;
+}

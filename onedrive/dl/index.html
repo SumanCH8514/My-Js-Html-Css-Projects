@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SharePoint Download Link Generator</title>
+    <style>
+      .generator {
+        width: 50%;
+        margin: 40px auto;
+        text-align: center;
+      }
+
+      #file-id {
+        width: 50%;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+
+      #generate-link {
+        background-color: #0078d4;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #generate-link:hover {
+        background-color: #00698f;
+      }
+
+      #download-link {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="generator">
+      <input type="text" id="file-id" placeholder="Enter File ID" />
+      <button id="generate-link">Generate Download Link</button>
+      <div id="download-link"></div>
+    </div>
+
+    <script>
+              const fileIdInput = document.getElementById('file-id');
+      const generateLinkButton = document.getElementById('generate-link');
+      const downloadLinkDiv = document.getElementById('download-link');
+
+      generateLinkButton.addEventListener('click', () => {
+        const fileId = fileIdInput.value.trim();
+        if (fileId) {
+          const downloadLink = `(link unavailable);
+          downloadLinkDiv.innerHTML = `Download Link: <a href="${downloadLink}" target="_blank">${downloadLink}</a>`;
+        } else {
+          downloadLinkDiv.innerHTML = 'Please enter a valid File ID';
+        }
+      });
+    </script>
+  </body>
+</html>

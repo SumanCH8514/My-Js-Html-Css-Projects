@@ -1,0 +1,13 @@
+/* Add some basic styling */
+body {
+  font-family: sans-serif;
+}
+
+#urlInput {
+  width: 300px;
+  padding: 10px;
+}
+
+#result {
+  margin-top: 10px;
+}

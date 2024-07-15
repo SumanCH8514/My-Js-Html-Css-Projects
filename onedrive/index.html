@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OneDrive Video Embedder</title>
+    <style>
+      #video-container {
+        width: 560px;
+        height: 315px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="onedrive-link"
+      placeholder="Enter OneDrive video link"
+    />
+    <button onclick="embedVideo()">Embed</button>
+    <div id="video-container"></div>
+
+    <script>
+      function embedVideo() {
+        const link = document.getElementById("onedrive-link").value;
+
+        // Basic validation (replace with more robust checks)
+        if (!link.startsWith("https://1drv.ms/")) {
+          alert("Invalid OneDrive link");
+          return;
+        }
+
+        // Extract embed code (you'll need to adjust this based on OneDrive's HTML structure)
+        // This is a simplified example, real implementation would involve fetching and parsing the link
+        const embedCode =
+          '<iframe src="' +
+          link +
+          '" width="560" height="315" frameborder="0" allowfullscreen></iframe>';
+
+        document.getElementById("video-container").innerHTML = embedCode;
+      }
+    </script>
+  </body>
+</html>

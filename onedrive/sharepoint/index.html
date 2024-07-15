@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SharePoint Video Embedder</title>
+    <style>
+      #video-container {
+        width: 560px;
+        height: 315px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="sharepoint-link"
+      placeholder="Enter SharePoint video link"
+    />
+    <button onclick="embedVideo()">Embed</button>
+    <div id="video-container"></div>
+
+    <script>
+      function embedVideo() {
+        const link = document.getElementById("sharepoint-link").value;
+
+        // Basic validation (replace with more robust checks)
+        if (!link.startsWith("https://")) {
+          alert("Invalid SharePoint link");
+          return;
+        }
+
+        // Fetch and extract embed code (you'll need to adjust this based on SharePoint's HTML structure)
+        fetch(link)
+          .then((response) => response.text())
+          .then((html) => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const videoElement = doc.querySelector("video");
+
+            if (videoElement) {
+              const videoSource = videoElement.querySelector("source").src;
+              const embedCode = `<video width="560" height="315" controls><source src="${videoSource}" type="video/mp4"></video>`;
+              document.getElementById("video-container").innerHTML = embedCode;
+            } else {
+              alert("Video not found or not accessible.");
+            }
+          })
+          .catch((error) => {
+            alert("Error fetching the SharePoint page: " + error);
+          });
+      }
+    </script>
+  </body>
+</html>
